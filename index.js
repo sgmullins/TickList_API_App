@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 
 //Require routes-- looks for the associated routes files
@@ -27,4 +27,6 @@ app.get('/', function (req, res) {
 //prefixing all routes with /api/ticks
 app.use('/api/ticks', ticksRoutes)
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(PORT, () => {
+	console.log(`Our app is running on port ${ PORT }`);
+});
